@@ -95,10 +95,12 @@ class _ReportButtonState extends ConsumerState<ReportButton>
         if (_feedbackMessage != null)
           Positioned(
             bottom: 200,
+            right: 0,
             child: _FeedbackPill(message: _feedbackMessage!),
           ),
         Positioned(
           bottom: 100,
+          right: 0,
           child: AnimatedOpacity(
             opacity: _selectorOpen ? 1 : 0,
             duration: const Duration(milliseconds: 220),
