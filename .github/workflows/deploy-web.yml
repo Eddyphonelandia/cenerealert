@@ -21,6 +21,10 @@ jobs:
 
       - run: flutter create . --platforms=web
 
+      - name: Aggiungi MapLibre GL JS a index.html
+        run: |
+          sed -i 's#</head>#<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />\n<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>\n</head>#' web/index.html
+
       - run: flutter pub get
 
       - run: |
