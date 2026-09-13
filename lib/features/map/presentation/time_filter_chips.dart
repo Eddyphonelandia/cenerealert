@@ -21,17 +21,21 @@ class TimeFilterChips extends ConsumerWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: AppColors.darkBorder),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          for (final filter in TimeFilter.values)
-            _FilterChip(
-              filter: filter,
-              selected: filter == selected,
-              onTap: () =>
-                  ref.read(timeFilterProvider.notifier).state = filter,
-            ),
-        ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: const ClampingScrollPhysics(),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final filter in TimeFilter.values)
+              _FilterChip(
+                filter: filter,
+                selected: filter == selected,
+                onTap: () =>
+                    ref.read(timeFilterProvider.notifier).state = filter,
+              ),
+          ],
+        ),
       ),
     );
   }
