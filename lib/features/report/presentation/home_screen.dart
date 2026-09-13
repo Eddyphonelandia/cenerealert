@@ -29,44 +29,47 @@ class HomeScreen extends StatelessWidget {
           SafeArea(
             child: Stack(
               children: [
-                const _StatusIndicator(),
-                const Positioned(
-                  top: 16,
-                  left: 0,
-                  right: 0,
-                  child: Center(child: TimeFilterChips()),
-                ),
                 Positioned(
                   top: 16,
+                  left: 16,
                   right: 16,
-                  child: Column(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _IconCircleButton(
-                        icon: Icons.person_outline,
-                        onTap: () => AccountLinkSheet.show(context),
-                      ),
-                      const SizedBox(height: 8),
-                      _IconCircleButton(
-                        icon: Icons.bookmark_outline,
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => const SavedPlacesScreen(),
+                      const Flexible(child: _StatusIndicator()),
+                      const SizedBox(width: 8),
+                      const Expanded(child: Center(child: TimeFilterChips())),
+                      const SizedBox(width: 8),
+                      Column(
+                        children: [
+                          _IconCircleButton(
+                            icon: Icons.person_outline,
+                            onTap: () => AccountLinkSheet.show(context),
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      _IconCircleButton(
-                        icon: Icons.notifications_outlined,
-                        onTap: () => NotificationRadiusSheet.show(context),
-                      ),
-                      const SizedBox(height: 8),
-                      _IconCircleButton(
-                        icon: Icons.checklist_outlined,
-                        onTap: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => const ChecklistScreen(),
+                          const SizedBox(height: 8),
+                          _IconCircleButton(
+                            icon: Icons.bookmark_outline,
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => const SavedPlacesScreen(),
+                              ),
+                            ),
                           ),
-                        ),
+                          const SizedBox(height: 8),
+                          _IconCircleButton(
+                            icon: Icons.notifications_outlined,
+                            onTap: () => NotificationRadiusSheet.show(context),
+                          ),
+                          const SizedBox(height: 8),
+                          _IconCircleButton(
+                            icon: Icons.checklist_outlined,
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => const ChecklistScreen(),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -118,20 +121,33 @@ class _StatusIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 16,
-      left: 16,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          color: AppColors.darkSurfaceElevated.withOpacity(0.72),
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.darkBorder),
-        ),
-        child: const Text(
-          'CenereAlert · in linea',
-          style: TextStyle(fontSize: 12, color: AppColors.darkTextSecondary),
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppColors.darkSurfaceElevated.withOpacity(0.72),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.darkBorder),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 6,
+            height: 6,
+            decoration: const BoxDecoration(
+              color: AppColors.amberSignal,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const SizedBox(width: 6),
+          const Flexible(
+            child: Text(
+              'CenereAlert',
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 12, color: AppColors.darkTextSecondary),
+            ),
+          ),
+        ],
       ),
     );
   }
