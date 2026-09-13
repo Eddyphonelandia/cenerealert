@@ -1,0 +1,32 @@
+{
+  "version": 8,
+  "name": "CenereAlert Dark",
+  "sources": {
+    "carto-dark": {
+      "type": "raster",
+      "tiles": [
+        "https://a.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png",
+        "https://b.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png",
+        "https://c.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png",
+        "https://d.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png"
+      ],  
+      "tileSize": 256,
+      "attribution": "© <a href=\"https://carto.com/attributions\">CARTO</a> © OpenStreetMap contributors"
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": { "background-color": "#0B0D0F" }
+    },
+    {
+      "id": "carto-dark-layer",
+      "type": "raster",
+      "source": "carto-dark",
+      "minzoom": 0,
+      "maxzoom": 20,
+      "paint": { "raster-opacity": 0.9 }
+    }
+  ]
+}
