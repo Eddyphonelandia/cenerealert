@@ -1,3 +1,4 @@
+import '../../../core/config/map_style_path.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
@@ -102,7 +103,7 @@ class _LiveMapState extends ConsumerState<LiveMap> {
       fit: StackFit.expand,
       children: [
         MaplibreMap(
-          styleString: 'asset://assets/map_style/dark_style.json',
+          styleString: mapStylePath,
           initialCameraPosition: const CameraPosition(
             target: _etnaCenter,
             zoom: 10,
