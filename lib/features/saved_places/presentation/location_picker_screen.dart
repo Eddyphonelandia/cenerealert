@@ -1,3 +1,4 @@
+import '../../../core/config/map_style_path.dart'
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 
@@ -42,7 +43,7 @@ class _LocationPickerScreenState extends State<LocationPickerScreen> {
       body: Stack(
         children: [
           MaplibreMap(
-            styleString: 'asset://assets/map_style/dark_style.json',
+            styleString: mapStylePath,
             initialCameraPosition: CameraPosition(target: _center, zoom: 13),
             myLocationEnabled: false,
             compassEnabled: false,
