@@ -1,8 +1,5 @@
 name: Build and deploy web
 
-# Si attiva ad ogni push sul branch main. L'intera build gira sui server
-# di GitHub (Ubuntu), non sul tuo computer: non serve avere Flutter
-# installato in locale per pubblicare la versione web dell'app.
 on:
   push:
     branches: [main]
@@ -22,18 +19,13 @@ jobs:
         with:
           flutter-version: '3.24.0'
 
-      # Il repository contiene solo lib/, non gli scaffold di piattaforma
-      # (vedi README): questo comando genera la cartella web/ mancante,
-      # senza toccare il codice Dart già presente.
       - run: flutter create . --platforms=web
 
       - run: flutter pub get
 
-      # SUPABASE_URL e SUPABASE_ANON_KEY vanno creati come Secrets del
-      # repository (Settings > Secrets and variables > Actions), non
-      # scritti qui in chiaro.
       - run: |
           flutter build web --release \
+            --base-href /cenerealert/ \
             --dart-define=SUPABASE_URL=${{ secrets.SUPABASE_URL }} \
             --dart-define=SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
 
