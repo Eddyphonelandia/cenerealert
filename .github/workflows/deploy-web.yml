@@ -26,6 +26,8 @@ jobs:
       - run: |
           flutter build web --release \
             --base-href /cenerealert/ \
+            --web-renderer html \
+            --source-maps \
             --dart-define=SUPABASE_URL=${{ secrets.SUPABASE_URL }} \
             --dart-define=SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
 
