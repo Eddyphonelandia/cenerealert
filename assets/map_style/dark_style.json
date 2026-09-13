@@ -1,17 +1,16 @@
 {
   "version": 8,
-  "name": "CenereAlert Dark",
+  "name": "CenereAlert OSM",
   "sources": {
-    "carto-dark": {
+    "osm-standard": {
       "type": "raster",
       "tiles": [
-        "https://a.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}.png",
-        "https://b.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}.png",
-        "https://c.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}.png",
-        "https://d.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}.png"
+        "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
       ],
       "tileSize": 256,
-      "attribution": "© <a href=\"https://carto.com/attributions\">CARTO</a> © OpenStreetMap contributors"
+      "attribution": "© OpenStreetMap contributors"
     }
   },
   "layers": [
@@ -21,12 +20,11 @@
       "paint": { "background-color": "#0B0D0F" }
     },
     {
-      "id": "carto-dark-layer",
+      "id": "osm-layer",
       "type": "raster",
-      "source": "carto-dark",
+      "source": "osm-standard",
       "minzoom": 0,
-      "maxzoom": 20,
-      "paint": { "raster-opacity": 0.9 }
+      "maxzoom": 19
     }
   ]
 }
